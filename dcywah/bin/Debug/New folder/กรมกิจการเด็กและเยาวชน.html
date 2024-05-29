@@ -1,0 +1,456 @@
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link class="jsbin" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/base/jquery-ui.css"
+		rel="stylesheet" type="text/css" />
+	<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
+	<meta http-equiv=”content-language” content=”th” />
+	<meta name="description" content="กรมกิจการเด็กและเยาวชน" />
+	<meta name="keywords" content="กรมกิจการเด็กและเยาวชน" />
+	<title>กรมกิจการเด็กและเยาวชน</title>
+	<link rel="shortcut icon" href="http://opptgg.opp.go.th/opp/favicon2.ico" type="image/x-icon" />
+	<link rel="icon" href="http://opptgg.opp.go.th/opp/favicon2.ico" type="image/x-icon" />
+	<link href="http://161.82.213.251/opp//css/default.css" rel="stylesheet" type="text/css" />
+	<link href="http://161.82.213.251/opp//css/app.css" rel="stylesheet" type="text/css" />
+	<link href="http://161.82.213.251/opp//css/style.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="http://161.82.213.251/opp//css/autosuggest_inquisitor.css" type="text/css"
+		media="screen" charset="TIS-620" />
+	<script type="text/javascript" src="http://161.82.213.251/opp//lib/lib_AutoSuggest.js" charset="TIS-620"></script>
+	<!-- <script language="JavaScript1.4" src="http://161.82.213.251/opp//lib/lib_java.js" type="text/javascript"></script> -->
+	<script language="JavaScript1.4" src="http://161.82.213.251/opp//lib/jquery-ui-1.8.11.custom.min.js"
+		type="text/javascript"></script>
+	<script type='text/javascript' src='https://code.jquery.com/jquery-1.12.4.min.js' crossorigin="anonymous"></script>
+	<script language="javascript">
+		function forceNumber(event) {
+			var keyCode = event.keyCode ? event.keyCode : event.charCode;
+			if ((keyCode < 48 || keyCode > 58) && keyCode != 8 && keyCode != 9)
+				return false;
+		}
+	</script>
+	<script language="javascript">
+		// enable login button
+		function Enable() {
+			if (document.frLogin.ckAccept.checked)
+				document.frLogin.btLogin.disabled = false
+			else
+				document.frLogin.btLogin.disabled = true
+		}
+	</script>
+	<script type='text/javascript'>
+		function refreshCaptcha() {
+			var img = document.images['captchaimg'];
+			img.src = img.src.substring(0, img.src.lastIndexOf("?")) + "?rand=" + Math.random() * 1000;
+		}
+	</script>
+	<script type="text/javascript">
+		function readURL(input) {
+			if (input.files && input.files[0]) {
+				var reader = new FileReader();
+
+				reader.onload = function (e) {
+					$('#blah')
+						.attr('src', e.target.result)
+						.width(200)
+						.height(265);
+				};
+
+				reader.readAsDataURL(input.files[0]);
+			}
+		}
+	</script>
+	<script type="text/javascript">
+		function checkText() {
+			var elem = document.getElementById('test_txt').value;
+			if (!elem.match(/^([a-z\-])+$/i)) {
+				alert("กรอกได้เฉพาะ a-Z, A-Z");
+				document.getElementById('test_txt').value = "";
+			}
+		}
+		function checkText1() {
+			var elem = document.getElementById('test_txt1').value;
+			if (!elem.match(/^([a-zA-Z\-. ])+$/i)) {
+				alert("กรอกได้เฉพาะ a-Z, A-Z และ - .");
+				document.getElementById('test_txt1').value = "";
+			}
+		}
+		function checkText2() {
+			var elem = document.getElementById('test_txt2').value;
+			if (!elem.match(/^([a-zA-Z\-. ])+$/i)) {
+				alert("กรอกได้เฉพาะ a-Z, A-Z และ - .");
+				document.getElementById('test_txt2').value = "";
+			}
+		}
+	</script>
+	<script type="text/javascript">
+		function checkTextthai() {
+			var elem = document.getElementById('NAME_TH').value;
+			if (!elem.match(/^[ก-๏\s\-]+$/u)) {
+				alert("กรอกชื่อ ได้เฉพาะตัวอักษรภาษาไทยเท่านั้น");
+				document.getElementById('NAME_TH').value = "";
+			}
+		}
+		function checkTextthailastname() {
+			var elem = document.getElementById('LASTNAME_TH').value;
+			if (!elem.match(/^[ก-๏\s\-]+$/u)) {
+				alert("กรอกนามสกุล ได้เฉพาะตัวอักษรภาษาไทยเท่านั้น");
+				document.getElementById('LASTNAME_TH').value = "";
+			}
+		}
+	</script>
+	<!--เช็คเลขบัตรประชาชน
+-->
+
+	<script>
+		function check_data() {
+			if (document.frLogin.CARD_ID.value == "") {
+				alert("เลขบัตรประชาชนห้ามเป็นค่าว่าง");
+				document.frLogin.CARD_ID.focus();
+				return false;
+			}
+			if (document.frLogin.PREFIX_TH.value == "0") {
+				alert("กรุณาเลือกคำนำหน้าภาษาไทย");
+				document.frLogin.PREFIX_TH.focus();
+				return false;
+			}
+			if (document.frLogin.NAME_TH.value == "") {
+				alert("กรุณากรอกชื่อภาษาไทย");
+				document.frLogin.NAME_TH.focus();
+				return false;
+			}
+			if (document.frLogin.LASTNAME_TH.value == "") {
+				alert("กรุณากรอกนามสกุลภาษาไทย");
+				document.frLogin.LASTNAME_TH.focus();
+				return false;
+			}
+			if (document.frLogin.PREFIX_EN.value == "0") {
+				alert("กรุณาเลือกคำนำหน้าภาษาอังกฤษ");
+				document.frLogin.PREFIX_EN.focus();
+				return false;
+			}
+			if (document.frLogin.NAME_EN.value == "") {
+				alert("กรุณากรอกชื่อภาษาอังกฤษ");
+				document.frLogin.NAME_EN.focus();
+				return false;
+			}
+			if (document.frLogin.LASTNAME_EN.value == "") {
+				alert("กรุณากรอกนามสกุลภาษาอังกฤษ");
+				document.frLogin.LASTNAME_EN.focus();
+				return false;
+			}
+			if (document.frLogin.EMAIL.value == "") {
+				alert("กรุณากรอกอีเมล์ของท่านให้ถูกต้อง");
+				document.frLogin.EMAIL.focus();
+				return false;
+			}
+			if (document.frLogin.ADDRESS.value == "") {
+				alert("กรุณากรอกที่อยู่ปัจจุบัน");
+				document.frLogin.ADDRESS.focus();
+				return false;
+			}
+			if (document.frLogin.capt.value == "") {
+				alert("กรุณากรอกตัวเลขที่ท่านเห็นให้ถูกต้อง");
+				document.frLogin.capt.focus();
+				return false;
+			}
+			form_mail = document.frLogin
+			mail = form_mail.EMAIL.value.indexOf("@")
+			submitOK = "True"
+			if (mail == -1) {
+				alert("คุณยังไม่ได้ใส่ (Email)")
+				document.frLogin.EMAIL.focus();
+				submitOK = "False"
+			}
+			if (submitOK == "False") {
+				return false
+
+			}
+		}
+	</script>
+	<style>
+		#grad1 {
+			height: 48px;
+			width: 200px;
+			background: -webkit-linear-gradient(left, red, orange, yellow, green, blue, indigo, violet);
+			/* For Safari 5.1 to 6.0 */
+			background: -o-linear-gradient(left, red, orange, yellow, green, blue, indigo, violet);
+			/* For Opera 11.1 to 12.0 */
+			background: -moz-linear-gradient(left, red, orange, yellow, green, blue, indigo, violet);
+			/* For Fx 3.6 to 15 */
+			background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+			/* Standard syntax (must be last) */
+		}
+	</style>
+	<script type="text/javascript">
+		// <![CDATA[
+		/* No Right Click */
+
+		function clickNS4(e) {
+			if (document.layers || document.getElementById && !document.all) {
+				if (e.which == 2 || e.which == 3) {
+					alert(message);
+					return false;
+				}
+			}
+		}
+		if (document.layers) {
+			document.captureEvents(Event.MOUSEDOWN);
+			document.onmousedown = clickNS4;
+		}
+		else if (document.all && !document.getElementById) {
+			document.onmousedown = clickIE4;
+		}
+		document.oncontextmenu = new Function("alert(message);return false");
+		/* End No Right Click */
+
+		/* No Highlighting */
+		var omitformtags = ["input", "textarea", "select"];
+		omitformtags = omitformtags.join("|");
+		function disableselect(e) {
+			if (omitformtags.indexOf(e.target.tagName.toLowerCase()) == -1)
+				return false
+		}
+		function reEnable() {
+			return true
+		}
+		if (typeof document.onselectstart != "undefined") {
+			document.onselectstart = new Function("return false")
+		}
+		else {
+			document.onmousedown = disableselect;
+			document.onmouseup = reEnable;
+		}
+		/* End  No Highlighting */
+		// ]]>
+	</script>
+</head>
+
+<body>
+	<div id="container">
+		<table>
+			<tr align="center"><img src="http://161.82.213.251/opp//images/header_small.png">
+				<td></td>
+			</tr>
+		</table>
+		<div id="content2">
+			<div align="center"><!-- Display the countdown timer in an element -->
+				<p id="demo" style="font-size:20px; color:red;"></p>
+				<script>
+					// Set the date we're counting down to
+					var countDownDate = new Date("Apr 25, 2024 09:00:00").getTime();
+
+					// Update the count down every 1 second
+					var x = setInterval(function () {
+
+						// Get today's date and time
+						var now = new Date().getTime();
+
+						// Find the distance between now and the count down date
+						var distance = countDownDate - now;
+
+						// Time calculations for days, hours, minutes and seconds
+						var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+						var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+						var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+						var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+						// Display the result in the element with id="demo"
+						document.getElementById("demo").innerHTML = "เปิดลงทะเบียน " + hours + " ชั่วโมง "
+							+ minutes + " นาที " + seconds + " วินาที ";
+
+						// If the count down is finished, write some text
+						if (distance < 0) {
+							clearInterval(x);
+							document.getElementById("demo").innerHTML = "";
+						}
+					}, 1000);
+				</script>
+			</div>
+
+			<div align="center"><b>
+					<font style="font-size: 30px;">ทดสอบ</font>
+				</b></div>
+
+			<form name="frLogin" method="post" action="http://161.82.213.251/opp/app/register.php?act=act" id="frLogin"
+				enctype="multipart/form-data">
+				<table width="100%" border="0" cellpadding="2" cellspacing="2">
+					<tr>
+						<td height="35" colspan="2" bgcolor="#55afe3">
+							<table width="100%">
+								<tr>
+									<td>
+										<h1>&nbsp;แบบฟอร์มสมัครสมาชิก เพื่อสมัครโครงการออนไลน์</h1>
+									</td>
+									<td align="right">
+										<!--<a href="การลงทะเบียนออนไลน์ 21-6-2565.pdf"><font color="#ffffff">Download</font> คู่มือแนะนาการสมัคร</a>-->
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr height='30px'>
+						<td bgcolor="#F0F0F0"><b>จำนวนผู้สมัครสมาชิกวันนี้</b></td>
+
+						<td><b>
+								<font color="blue">500/500 คน</font>&nbsp;&nbsp;<font color="red">(
+									เต็มตามจำนวนที่เปิดรับ) ของวันที่ 25-04-2024</font>
+							</b></td>
+					</tr>
+					<tr height='40px'>
+						<td bgcolor="#F0F0F0"><b>เลือกโครงการที่ต้องการ</b>&nbsp;<font color="red">*</font>
+						</td>
+						<!--<td><input type="radio" name="PROJECT_ID" value="6"><b>โครงการ Working Holiday Scheme ไทย-นิวซีแลนด์  </b><input type="radio" name="PROJECT_ID" value="7"><b> โครงการ Work and Holiday Visa ไทย-ออสเตรเลีย</b></td>-->
+						<td><input type="radio" name="PROJECT_ID" value="13" checked="checked"><b>โครงการ Work and
+								Holiday Visa ไทย-ออสเตรเลีย</b></td>
+						<!--<td><input type="radio" name="PROJECT_ID" value="9" checked="checked"><b> โครงการ Work and Holiday Visa ไทย-ออสเตรเลีย</b></td>-->
+					</tr>
+					<tr>
+						<td bgcolor="#F0F0F0">รูปถ่ายหน้าตรง&nbsp;<font color="red">*</font>
+						</td>
+						<td><img id="blah" src="images/temp.png" alt="your image" /><br>
+							<input type="file" name="fileUpload" onchange="readURL(this);" />
+							<font color="red">ขนาดรูป 200x265 pixel&nbsp;(.jpg, .png เท่านั้น)</font>
+							<button type="button" onclick="setDefaultImage()">Set Default Image</button>
+						</td>
+
+					</tr>
+					<tr>
+						<td width="16%" bgcolor="#F0F0F0">เลขประจำตัวประชาชน&nbsp;<font color="red">*</font>
+						</td>
+						<td width="84%">
+							<input id="idcard" name="CARD_ID" style="width:105px;" maxlength="13"
+								onKeyUp="if(isNaN(this.value)){ alert('กรุณากรอกตัวเลข'); this.value='';}"
+								value="1369900361691" />
+						</td>
+					</tr>
+					<tr>
+						<td bgcolor="#F0F0F0" height="20">คำนำหน้า&nbsp;<font color="red">*</font>
+						</td>
+						<td>
+							<select name="PREFIX_TH">
+								<option value="0">--เลือก--</option>
+								<option value="นาย">นาย</option>
+								<option value="นาง">นาง</option>
+								<option value="นางสาว" selected>นางสาว</option>
+							</select>
+							<!-- <input type="text"  style="width:60px;";/> -->
+						</td>
+					</tr>
+					<tr>
+						<td bgcolor="#F0F0F0" height="20">ชื่อ&nbsp;<font color="red">*</font>
+						</td>
+						<td><input id="NAME_TH" type="text" name="NAME_TH" style="width:200px;"
+								onKeyUp="checkTextthai();" value="อาริษา" /></td>
+					</tr>
+					<tr>
+						<td bgcolor="#F0F0F0" height="20">นามสกุล&nbsp;<font color="red">*</font>
+						</td>
+						<td><input id="LASTNAME_TH" type="text" name="LASTNAME_TH" style="width:200px;"
+								onKeyUp="checkTextthailastname();" value="วัชรคุปต์" /></td>
+					</tr>
+					<tr>
+						<td colspan='2' bgcolor="#F0F0F0" height="20">
+							<font color="red"><b>ให้สะกดคำนำหน้าและชื่อตาม passport<b></font>
+						</td>
+					</tr>
+					<tr>
+						<td bgcolor="#F0F0F0" height="20">Name Title&nbsp;<font color="red">*</font>
+						</td>
+						<td>
+							<select name="PREFIX_EN">
+								<option value="0">--select--</option>
+								<option value="MR">MR</option>
+								<option value="MRS">MRS</option>
+								<option value="MISS" selected>MISS</option>
+							</select>
+							<!--<input type="text" name="PREFIX_EN" style="width:60px;" onblur="checkText();" id="test_txt"/>-->
+						</td>
+					</tr>
+					<tr>
+						<td bgcolor="#F0F0F0" height="20">Name&nbsp;<font color="red">*</font>
+						</td>
+						<td><input type="text" name="NAME_EN" style="width:200px;" onKeyUp="checkText1();"
+								id="test_txt1" value="ARISA" /></td>
+					</tr>
+					<tr>
+						<td bgcolor="#F0F0F0" height="20">Lastname&nbsp;<font color="red">*</font>
+						</td>
+						<td><input type="text" name="LASTNAME_EN" style="width:200px;" onKeyUp="checkText2();"
+								id="test_txt2" value="WATCHARAKUP" /></td>
+					</tr>
+					<tr>
+						<td bgcolor="#F0F0F0" height="20">อีเมล์&nbsp;<font color="red">*</font>
+						</td>
+						<td><input type="text" name="EMAIL" style="width:200px;"
+								value="Arisa.watcharakup1996@gmail.com" />
+							&nbsp;<font color="red"><b> ระบบจะให้ทำการยืนยันการสมัครที่อีเมล์อีกครั้ง</font>
+						</td>
+					</tr>
+					<tr>
+						<td bgcolor="#F0F0F0">ที่อยู่ปัจจุบัน<font color="red">*</font>
+						</td>
+						<td><textarea name="ADDRESS" rows="5" style="width:470px;"
+								;=";">125/199 หมู่7 ตึกโบว์ เปรมฤทัย ซ.4 ต.บางโฉลง อ. บางพลี สมุทรปราการ 10540</textarea>
+						</td>
+					</tr>
+					<tr>
+						<td bgcolor="#F0F0F0">
+							<div id="grad1" style="text-align:center;color:#888888;font-size:40px;font-weight:bold">
+								70080</div>
+						</td>
+						<td><input type="text" name="capt" maxlength="5" value="70080" style="widht:5px;"
+								onKeyUp="if(isNaN(this.value)){ alert('กรุณากรอกตัวเลข'); this.value='';}">
+							*กรุณาใส่ตัวเลขที่ท่านเห็นให้ถูกต้อง</td>
+					</tr>
+					<tr>
+						<td bgcolor="#F0F0F0">ยืนยันข้อมูล<font color="red">*</font>
+						</td>
+						<td><input name="ckAccept" type="checkbox" id="ckAccept" onClick="Enable()" checked>&nbsp;<font
+								color="red"><b>กรุณาตรวจสอบข้อมูลให้ถูกต้อง หากข้อมูลไม่ตรงกับความเป็นจริงจะถูก<font
+										color="blue">ตัดสิทธิ์</font>ทุกกรณี</font>
+						</td>
+					</tr>
+					<tr>
+						<td bgcolor="#F0F0F0">&nbsp;</td>
+						<td>
+							<input name="btLogin" type="submit" id="btLogin" value="บันทึกข้อมูล" />
+							<input type="hidden" name="passw2" value="70080">
+						</td>
+					</tr>
+				</table>
+			</form>
+
+
+			<script>
+				$(document).ready(function () {
+					$('#btLogin').click(function () {
+						var formData = new FormData($('#frLogin')[0]);
+						console.log('formData:', formData);
+						$.ajax({
+							url: 'http://161.82.213.251/opp/app/register.php?act=act',
+							type: 'POST',
+							data: formData,
+							contentType: false,
+							processData: false,
+							success: function (response) {
+								console.log('Success:', response);
+								// Handle success here, e.g., show a success message to the user
+								alert('Registration successful!');
+							},
+							error: function (error) {
+								console.log('Error:', error);
+								// Handle error here, e.g., show an error message to the user
+								alert('Error occurred. Please try again.');
+							}
+						});
+					});
+				});
+			</script>
+		</div>
+		<div>
+</body>
+
+</html>

@@ -1,0 +1,167 @@
+@import url("ui-lightness/jquery-ui-1.8.11.custom.css");
+* { 
+	font-family: Tahoma, CordiaUPC,Microsoft Sans Serif,MS Sans Serif, AngsanaUPC;
+	font-size:10pt;
+}
+body
+{
+	font-family: Tahoma, CordiaUPC,Microsoft Sans Serif,MS Sans Serif, AngsanaUPC;
+	color:#000000;
+	/*background-color: #CCCCCC;*/
+	/*background:url(../images/bg.gif);*/
+	background:url(../images/bg_old2.jpg);
+	font-size: 10pt;
+	font-style: normal;
+	/*line-height: 14pt;*/
+	font-weight: normal;
+	font-variant: normal;
+	margin-left: 5px;
+	margin-top: 5px;
+	margin-right: 5px;
+	margin-bottom: 5px;
+	/*scrollbar-arrow-color: #006600;
+	scrollbar-3dlight-color: #003300;
+	scrollbar-darkshadow-color: #003300;
+	scrollbar-face-color: #f4f4f0;
+	scrollbar-highlight-color: #FFFFFF;
+	scrollbar-shadow-color: #d0d0d0;
+	scrollbar-track-color: #ffffff;*/
+}
+
+table,tr,td,th,div
+{
+	font-family: Tahoma, CordiaUPC,Microsoft Sans Serif,MS Sans Serif, AngsanaUPC;
+	font-size: 10pt;
+	empty-cells: show;	
+	/*table-layout: fixed;*/
+}
+img{
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;		
+	vertical-align: middle;
+}
+	a {
+	font-family: Tahoma;
+	font-size: 10pt;
+	color: #0000FF;
+	}
+	a:link {
+		text-decoration: none;
+	}
+	a:visited {
+		text-decoration: none;
+		color: #0000FF;
+	}
+	a:hover {
+		text-decoration: none;
+		color: #FF0000;
+	}
+	a:active {
+		text-decoration: none;
+		color: #0000FF;
+	}
+
+/*---------------------------------------------------------------------
+	this for IE
+---------------------------------------------------------------------*/
+/*input
+{
+	font-family: Tahoma, CordiaUPC,Microsoft Sans Serif,MS Sans Serif, AngsanaUPC;
+	font-size:  10pt;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	height: expression((this.type=="button")?'28px':'16px');
+	padding: 2px;
+	margin:2px;
+	border-width: expression((this.type=="radio")||((this.type=="checkbox"))?'0px' : '1px'); 
+	border:1px  solid  #AEC5DA;
+	background:expression((this.type=='button')?'url(../image/button_bg.gif)':'#ffffff');
+}*/
+/*---------------------------------------------------------------------
+	This for Firefox or safari
+---------------------------------------------------------------------*/
+/*input[type="button"]
+{   
+	height: 28px;
+    background-image: url('../image/button_bg.gif');   
+}  
+input[type="radio"],input[type="checkbox"]
+{   
+	border-width: 0px;
+}  
+select
+{
+	font-family: Tahoma, CordiaUPC,Microsoft Sans Serif,MS Sans Serif, AngsanaUPC;
+	font-size:  10pt;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	border:1px  solid  #AEC5DA;
+	padding: 2px;
+
+}
+textarea
+{
+	font-family: Tahoma, CordiaUPC,Microsoft Sans Serif,MS Sans Serif, AngsanaUPC;
+	font-size:  10pt;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	border:1px  solid  #AEC5DA;
+	background:url(textarea_bg.gif);
+}*/
+.text_readonly
+{
+	font-family: Tahoma, CordiaUPC,Microsoft Sans Serif,MS Sans Serif, AngsanaUPC;
+	font-size:  10pt;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	height: 25px;
+	padding: 2px;
+	margin:2px;
+	border:1px  dotted #AEC5DA;
+	border-top:none;
+	border-left:none;
+	border-right:none;		
+}
+.text_table
+{
+	font-family: Tahoma, CordiaUPC,Microsoft Sans Serif,MS Sans Serif, AngsanaUPC;
+	font-size:  10pt;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	height: 25px;
+	padding: 2px;
+	margin:2px;
+	border:0;
+}
+.curFocus{
+	background-color:#ECFFBF;
+}
+.div-right{
+	float:right;
+}
+
+.div-left{
+	float:left;
+}
+
+.div-block{
+	clear:both;
+	/*width:100%;*/
+}
+#print_button{
+	padding-left:5px;
+	padding-right:5px;
+	cursor:pointer;
+}
