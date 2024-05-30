@@ -127,7 +127,6 @@ C:\Users\BoxS\source\repos\dcywah\dcywah\bin\Debug\WebDriver.Support.dll
 C:\Users\BoxS\source\repos\dcywah\dcywah\bin\Debug\Newtonsoft.Json.xml
 C:\Users\BoxS\source\repos\dcywah\dcywah\bin\Debug\WebDriver.xml
 C:\Users\BoxS\source\repos\dcywah\dcywah\bin\Debug\WebDriver.Support.xml
-C:\Users\BoxS\source\repos\dcywah\dcywah\obj\Debug\dcywah.vbprojAssemblyReference.cache
 C:\Users\BoxS\source\repos\dcywah\dcywah\obj\Debug\dcywah.exe.config
 C:\Users\BoxS\source\repos\dcywah\dcywah\obj\Debug\dcywah.Form1.resources
 C:\Users\BoxS\source\repos\dcywah\dcywah\obj\Debug\dcywah.Resources.resources

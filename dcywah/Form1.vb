@@ -36,11 +36,25 @@ Public Class Form1
         End Try
     End Sub
 
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        ' Check current time
+        Dim currentTime As DateTime = DateTime.Now
 
+        ' Check if current time is greater than 08:59:40
+        If currentTime.TimeOfDay > TimeSpan.Parse("08:59:40") Then
+            ' Update button text
+            Timer1.Stop()
+            Button1_Click(sender, e)
+
+        End If
+    End Sub
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' Initialize BackgroundWorker
         backgroundWorker1.WorkerReportsProgress = True
         backgroundWorker1.WorkerSupportsCancellation = True
+        Timer1.Interval = 1000
+        Timer1.Start()
+
     End Sub
     ' BackgroundWorker DoWork event handler
     Private Sub backgroundWorker1_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles backgroundWorker1.DoWork
